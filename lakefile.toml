@@ -1,14 +1,14 @@
-name = "Project"
-defaultTargets = ["Project"]
+name = "Puzzle"
+defaultTargets = ["Puzzle"]
 
 [leanOptions]
 pp.unicode.fun = true
-autoImplicit = false
-relaxedAutoImplicit = false
+autoImplicit = true
+relaxedAutoImplicit = true
 
 [[require]]
 name = "mathlib"
 git = "https://github.com/leanprover-community/mathlib4.git"
 
 [[lean_lib]]
-name = "Project"
+name = "Puzzle"
