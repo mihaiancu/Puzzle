@@ -8,8 +8,7 @@ usemathjax: true
 
 Useful links:
 
-* [Zulip chat for Lean](https://leanprover.zulipchat.com/) for coordination
+* [Lean-Cluj Summer School 2026](https://github.com/Lean-Cluj/summer-school-2026/)
 * [Blueprint]({{ site.url }}/blueprint/)
 * [Blueprint as pdf]({{ site.url }}/blueprint.pdf)
 * [Dependency graph]({{ site.url }}/blueprint/dep_graph_document.html)
-* [Upstreaming dashboard]({{ site.url }}/dashboard)
