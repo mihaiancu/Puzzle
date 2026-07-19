@@ -7,10 +7,7 @@ usemathjax: true
 ---
 
 This project is part of [Lean-Cluj Summer School 2026](https://github.com/Lean-Cluj/summer-school-2026/).
-<!-- * [Blueprint]({{ site.url }}/blueprint/)
-* [Blueprint as pdf]({{ site.url }}/blueprint.pdf)
-* [Dependency graph]({{ site.url }}/blueprint/dep_graph_document.html)
-* [Documentation]({{ site.url }}/docs/Puzzle/Solution.html) -->
+
 
 Tom, Jerry and Spike play the following game.
 Tom generates a random binary code of length `n`,
