@@ -1,5 +1,7 @@
 ## macOS
 .DS_Store
+## Agents
+.agents/*
 ## Lake
 .lake/*
 .cache/*
@@ -18,7 +20,6 @@
 /home_page/blueprint/
 /home_page/blueprint.pdf
 /home_page/docs/
-/home_page/_includes/_upstreaming_dashboard/
 ## TeX
 *.aux
 *.lof
