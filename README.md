@@ -61,10 +61,11 @@ To set up GitHub Pages for your repository, follow these steps:
 2. In the left sidebar, click on the **Pages** section.
 3. In the **Source** dropdown, select `GitHub Actions`.
 
-The workflow [`deploy-pages.yml`](.github/workflows/deploy-pages.yml) builds the Jekyll site in
-[`website`](website), runs the
+The workflow [`blueprint.yml`](.github/workflows/blueprint.yml) builds the project, runs the
 [`upstreaming-dashboard-action`](https://github.com/leanprover-community/upstreaming-dashboard-action),
-and deploys the result to GitHub Pages.
+compiles the blueprint and API docs, builds the Jekyll site in [`home_page`](home_page)
+(which includes the dashboard page), and deploys the combined result to GitHub Pages in a
+single step.
 
 ## Repository Layout
 
@@ -78,8 +79,9 @@ The template repository is organized as follows (listing the main folders and fi
         and can be manually disabled by clicking on the **Actions** tab, selecting **Build Project**
         in the left sidebar, then clicking the horizontal triple dots (⋯) on the right,
         and choosing **Disable workflow**.
-        - [`deploy-pages.yml`](.github/workflows/deploy-pages.yml) defines the workflow for building
-        and deploying the GitHub Pages site, including generation of the upstreaming dashboard.
+        - [`blueprint.yml`](.github/workflows/blueprint.yml) defines the workflow for building
+        and deploying the GitHub Pages site (blueprint, API docs, homepage, and upstreaming
+        dashboard) in a single build and deploy step.
         - [`create-release.yml`](.github/workflows/create-release.yml): defines the workflow for creating a new Git tag and GitHub release when the `lean-toolchain` file is updated in the `main` branch. Ensure the following settings are configured under **Settings > Actions > General > Workflow permissions**: "Read and write permissions" and "Allow GitHub Actions to create and approve pull requests".
         - [`update.yml`](.github/workflows/update.yml) is the dependency
         update workflow to be triggered manually by default. [It's not documented yet, but it will be soon.]
