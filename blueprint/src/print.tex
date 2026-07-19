@@ -9,25 +9,56 @@
 % (no ugly rectangles around links).
 % It is otherwise a very minimal preamble (you should probably at least
 % add cleveref and tikz-cd).
+\documentclass[11pt,a4paper]{amsart}
 
-\documentclass[a4paper]{amsart}
+\usepackage{amssymb, amsthm, amsmath}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=blue,
+    pdftitle={The (Almost) Impossible Puzzle},
+    pdfpagemode=UseNone,
+    }
 
-\usepackage{geometry}
 
-\usepackage{expl3}
+\usepackage[showmore, dep_graph]{blueprint}
+\usepackage{xcolor}
 
-\usepackage{amssymb, amsthm, mathtools}
-\usepackage[unicode,colorlinks=true,linkcolor=blue,urlcolor=magenta, citecolor=blue]{hyperref}
-
-\usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
+\usepackage{showkeys}
 
 \input{macros/common}
-\input{macros/print}
+\input{macros/web}
 
-\title{Puzzle}
-\author{Mihai Iancu}
+\title{The (Almost) Impossible Puzzle}
+% \author{Mihai}
+
+
+% \documentclass[11pt]{amsart}
+% \usepackage{amssymb}
+
+\newcommand{\Zz}{\mathbb{Z}_2}
+\newcommand{\Fin}{\mathrm{Fin}\,}
+\newcommand{\B}{\color{blue}}
 
 \begin{document}
+
+\begin{abstract}
+Tom, Jerry and Spike play the following game.
+Tom generates a random binary code of length $n$,
+which he sends to Spike along with a \textit{secret number}
+between 0 and $n-1$. Spike flips exactly one bit in the code
+and then sends only the modified binary code to Jerry.
+Is there a pre-established strategy for Spike and Jerry
+such that Jerry can determine the \textit{secret number}
+solely by looking at the code sent by Spike?
+\end{abstract}
+
 \maketitle
+
+\bigskip
+
 \input{content}
+
 \end{document}
