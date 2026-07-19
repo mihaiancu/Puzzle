@@ -6,13 +6,12 @@
 \label{fun_shift_surj}
 \lean{fun_shift_surj}
 \leanok
-\uses{def:SF, def:Fin, def:Zz}
+\uses{def:SF}
 If $f:\Zz^n \to \Fin n$ is \eqref{SF} and $b\in\Zz^n$,
 then the function $\Fin n \ni i \mapsto f(b+{\rm e}_i) \in \Fin n$ is {\B surjective}.
 \end{lemma}
 
 \begin{proof}
-\leanok
 $\Fin n \ni i \mapsto f(b+{\rm e}_i) \in \Fin n$ is surjective, if
 $$\forall k \in \Fin n, \exists i \in \Fin n, f(b+{\rm e}_i) = k.$$
 Taking our $b$ in \eqref{SF}, we get the desired conclusion.
@@ -26,7 +25,7 @@ Taking our $b$ in \eqref{SF}, we get the desired conclusion.
 \label{fun_shift_inj}
 \lean{fun_shift_inj}
 \leanok
-\uses{def:SF, def:Fin, def:Zz}
+\uses{def:SF}
 If $f:\Zz^n \to \Fin n$ is \eqref{SF} and $b\in\Zz^n$,
     then the function $\Fin n \ni i \mapsto f(b+{\rm e}_i) \in \Fin n$ is {\B injective}.
 \end{lemma}

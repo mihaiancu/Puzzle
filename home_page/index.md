@@ -12,19 +12,20 @@ Useful links:
 * [Blueprint]({{ site.url }}/blueprint/)
 * [Blueprint as pdf]({{ site.url }}/blueprint.pdf)
 * [Dependency graph]({{ site.url }}/blueprint/dep_graph_document.html)
+* [Documentation]({{ site.url }}/docs/Puzzle/Solution.html)
 
 Tom, Jerry and Spike play the following game.
-Tom generates a random binary code of length $n$,
-which he sends to Spike along with a \textit{secret number}
-between 0 and $n-1$. Spike flips exactly one bit in the code
+Tom generates a random binary code of length `n`,
+which he sends to Spike along with a *secret number*
+between 0 and `n-1`. Spike flips exactly one bit in the code
 and then sends only the modified binary code to Jerry.
 Is there a pre-established strategy for Spike and Jerry
-such that Jerry can determine the \textit{secret number}
+such that Jerry can determine the *secret number*
 solely by looking at the code sent by Spike?
 
-We formalize in Lean 4, using Mathlib 4, the answer to this question, by characterizing all values of $n$ for which such a strategy exists.
+We formalize in Lean 4, using Mathlib 4, the answer to this question, by characterizing all values of `n` for which such a strategy exists.
 
-The puzzle and its solution(s) have been discussed,  mainly focusing on the case $n=64$ (often formulated as a chessboard puzzle), in the following references:
+The puzzle and its solution(s) have been discussed,  mainly focusing on the case `n=64` (often formulated as a chessboard puzzle), in the following references:
 * [Berry, N., *Impossible Escape?*, 2014](http://datagenetics.com/blog/december12014/index.html)
 * [Iancu, M., *The (Almost) Impossible Puzzle*, 2025](https://www.math.ubbcluj.ro/~didactica/pdfs/vadid.php?n=2025-13.pdf)
 * [Parker, M., *The almost impossible chessboard puzzle*, 2020](https://www.youtube.com/watch?v=as7Gkm7Y7h4)

@@ -4,8 +4,8 @@ import Mathlib.Data.Nat.Prime.Basic
 import Mathlib.Data.ZMod.Defs
 
 -------------------DEFINITIONS------------------------------------------
-abbrev ℤ₂ (n : ℕ) := Fin n → ZMod 2
-notation "ℤ₂^" n : max => ℤ₂ n
+abbrev Z2 (n : ℕ) := Fin n → ZMod 2
+notation "ℤ₂^" n : max => Z2 n
 
 def e (i : Fin n) : ℤ₂^n := Pi.single i 1
 

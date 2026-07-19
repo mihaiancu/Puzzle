@@ -2,9 +2,13 @@
 
 \begin{theorem}
     \label{puzzle}
+    \lean{puzzle}
+    \leanok
+    \uses{def:SF}
 If $0 < n$, then the puzzle has a strategy for $n$ if and only if  $\exists\,m \in \mathbb{N}, n = 2^m$.
 \end{theorem}
 
 \begin{proof}
+    \uses{puzzle_mp, puzzle_mpr}
 The forward direction is {\B Theorem} \ref{puzzle_mp}, and the reverse direction is {\B Theorem} \ref{puzzle_mpr}.
 \end{proof}
