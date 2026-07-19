@@ -1,0 +1,43 @@
+\section{Modus Ponens}
+
+\bigskip
+
+\begin{lemma}
+\label{strategy_pow2} If $0<n$ and $f:\Zz^n \to \Fin n$ is \eqref{SF}, then $\exists N\in\mathbb{N}, n\cdot N = 2^n$.
+\end{lemma}
+
+\begin{proof}
+{\B Let} $k := 0$ (which is in $\Fin n$ since $0<n$). By {\B Lemma} \ref{fun_shift_sum_pow2}, we {\B have}
+$$\sum_{b\in\Zz^n} \sum_{i\in\Fin n} \delta(f(b+{\rm e}_i),k) = 2^n.$$
+
+Since the {\B sums commute}, we can {\B rewrite} the above expression as
+$$ \sum_{i\in\Fin n} \sum_{b\in\Zz^n} \delta(f(b+{\rm e}_i),k) = 2^n.$$
+Using {\B Lemma} \ref{fun_shift_sum_rev}, we {\B simplify} this to have
+$$\sum_{i\in\Fin n} \sum_{b\in\Zz^n} \delta(f(b),k) = n \cdot \sum_{b\in\Zz^n} \delta(f(b),k) = 2^n.$$
+
+We {\B use} $N := \sum_{b\in\Zz^n} \delta(f(b),k)$ to finish the proof.
+\end{proof}
+
+\verb|Mathlib hint:| \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/BigOperators/Group/Finset/Sigma.html#Finset.sum_comm}{Finset.sum\_comm}.
+
+\bigskip
+
+\begin{lemma}
+\label{mul_pow2} If $\exists N\in\mathbb{N}, n\cdot N = 2^n$, then $\exists m\in\mathbb{N}, n = 2^m$.
+\end{lemma}
+
+\begin{proof}
+From the hypothesis, we {\B obtain} $N$ such that $n\cdot N = 2^n$. So, we {\B have} $n$ {\B divides} $2^n$. Since \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Data/Nat/Prime/Defs.html#Nat.prime_two}{  $2$ is prime}, $\exists\,m\in\mathbb{N}, n = 2^m$.
+\end{proof}
+
+\verb|Mathlib hint:| \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra1/Divisibility/Basic.html#Dvd.intro}{Dvd.intro}, \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Data/Nat/Prime/Basic.html#Nat.dvd_prime_pow}{Nat.dvd\_prime\_pow}.
+
+\bigskip
+
+\begin{theorem}
+\label{puzzle_mp} If $0 < n$ and the puzzle has a strategy for $n$, then $\exists\, m\in\mathbb{N}, n = 2^m$.
+\end{theorem}
+
+\begin{proof}
+Since the puzzle has a strategy, we {\B obtain} $f$ with \eqref{SF}. By putting toghether {\B Lemma} \ref{strategy_pow2} and {\B Lemma} \ref{mul_pow2}, $\exists\,m\in\mathbb{N}, n = 2^m$.
+\end{proof}

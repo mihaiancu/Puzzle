@@ -1,0 +1,63 @@
+\section{Definitions}
+
+\bigskip
+
+\begin{definition}
+\label{def:Fin}
+\href{https://leanprover-community.github.io/mathlib4_docs/Init/Prelude.html#Fin}{$\Fin$}$ n :=\{0,\ldots,n-1\}$, $n\in\mathbb{N}$
+($\Fin 0 := \emptyset$). $\Zz := \{0,1\}$ is the \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Ring/Defs.html#CommRing}{commutative ring} of \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Data/ZMod/Defs.html#ZMod}{integers modulo} $2$.
+\end{definition}
+
+\medskip
+
+\begin{definition}
+\label{def:Zn}
+$\Zz^n := \Zz\times...\times\Zz$. $\Zz^n$ can be seen as the set of all functions from $\Fin n$ to $\Zz$. In this file, we consider $\Zz^n$ as a \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Module/Defs.html#Module}{module} over $\Zz$.
+\end{definition}
+
+\medskip
+
+\begin{definition}
+\label{def:e}
+For $i\in \Fin n$, let ${\rm e}_i\in\Zz^n$ be the canonical vector with
+$1$ on the $i$-th position and zeros elsewhere
+\begin{equation}
+\tag{e}
+\label{e}
+{\rm e}_i := (0,\ldots,0,1,0,\ldots,0),
+\end{equation}
+${\rm e}_i$ can be also seen as the \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Notation/Pi/Basic.html#Pi.single}{function defined on $\Fin n$,
+supported at $i$, with value $1$ there, and $0$ elsewhere.}
+
+
+Note that $b+{\rm e}_i$ is the code $b$ with the $i$-th bit flipped,
+for every $b\in\Zz^n$ and $i\in \Fin n$.
+\end{definition}
+
+\medskip
+
+\begin{definition}
+\label{def:SF}
+We say that $f:\Zz^n \to \Fin n$ is a {\bf strategy function}, if
+\begin{equation}
+\label{SF}
+\tag{SF}
+\forall\, b\in\Zz^n, k\in\Fin n, \exists\, i \in \Fin n, f(b+{\rm e}_i) = k.
+\end{equation}
+
+We say that the puzzle {\bf has a strategy} for $n$ if
+$$\exists f: \Zz^n \to \Fin n, \; \eqref{SF}.$$
+\end{definition}
+
+\medskip
+
+\begin{definition}
+\label{def:d}
+Let $\delta: \Fin n \times \Fin n \to \mathbb{N}$ be given by
+\begin{equation}
+\tag{$\delta$}
+\label{d}
+\delta(i,j) \; = \; \B \text{if } i=j \text{ then } 1 \text{ else } 0.
+\end{equation}
+See the Mathlib definition \href{https://leanprover-community.github.io/mathlib4_docs/Init/Prelude.html#if-then-else}{if-then-else}.
+\end{definition}

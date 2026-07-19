@@ -1,0 +1,47 @@
+\section{Modus Ponens Reverse}
+
+\bigskip
+
+\begin{definition}
+\label{bij_Fin} For $m\in\mathbb{N}$, let $g : \Fin (2^m) \to \Zz^m$ be a bijective function. $g$ exists, {\B applying} the fact that $\Fin (2^m)$ and $\Zz^m$ have {\B equal cardinals}.
+\end{definition}
+
+\verb|Mathlib hint:| \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Data/Fintype/EquivFin.html#Fintype.equivOfCardEq}{Fintype.equivOfCardEq}.
+
+\bigskip
+
+\begin{lemma}
+\label{sum_basis} If $i \in \Fin n$ and $f : \Fin n \to \Zz^m$, then\\ $\displaystyle\sum_{j \in \Fin n} e_{ij} \boldsymbol{\cdot} f(j) = f(i)$.
+\end{lemma}
+
+\begin{proof}
+Unfolding \eqref{e}, $e_{ij} = 1$ if $i = j$ and $e_{ij} = 0$ otherwise. We shall {\B rewrite}  $\sum_{j \in \Fin n} e_{ij} \boldsymbol{\cdot} f(j)$ as $f(i)$, using the fact that the {\B single} term that contributes in the {\B sum} is the one with $j = i$.
+\end{proof}
+
+\verb|Mathlib hint:| \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Module/BigOperators.html#Fintype.sum_single_smul}{rw[Fintype.sum\_single\_smul]}.
+
+\bigskip
+
+\begin{theorem}
+\label{puzzle_mpr} If $n = 2^m$ for some $m$, then the puzzle has a strategy for $n$.
+\end{theorem}
+
+\begin{proof}
+First, we {\B rewrite} $n$ as $2^m$ in \eqref{SF}. {\B Let} $g$ be given by {\B Definition} \ref{bij_Fin} and {\B use} $f : \Zz^n \to \Fin n$ given by
+$$f(b) := g^{-1}\left(\sum_{j\in\Fin 2^m} b_j \boldsymbol{\cdot} g(j)\right), \quad b\in\Zz^n.$$
+
+{\B Introduce} $b\in\Zz^n$ and $k\in\Fin n$ in order to verify \eqref{SF} for $f$. In view of \eqref{SF}, we want to show
+$$\exists\,i\in\Fin n, f(b + {\rm e}_i) = g^{-1}\left(\sum_{j\in\Fin 2^m} (b_j + e_{ij}) \boldsymbol{\cdot} g(j)\right) = k.$$
+
+We {\B simplify} the above relation using the {\B distributivity of the scalar multiplication over addition} and over {\B sum} to get
+$$\sum_{j\in\Fin 2^m} (b_j + e_{ij}) \boldsymbol{\cdot} g(j) = \sum_{j\in\Fin 2^m} b_j \boldsymbol{\cdot} g(j) + \sum_{j\in\Fin 2^m} e_{ij} \boldsymbol{\cdot} g(j).$$
+
+{\B Let}'s {\B use} $i := g^{-1}\left(g(k) - \sum_{j\in\Fin 2^m} b_j \boldsymbol{\cdot} g(j)\right)$.
+By {\B Lemma \ref{sum_basis}}, we can {\B rewrite} the desired relation with $\displaystyle\sum_{j\in\Fin 2^m} e_{ij} \boldsymbol{\cdot} g(j) = g(i)$. By the expression of $i$, we can {\B simplify} to get
+\begin{align*}
+& g^{-1}\left(\sum_{j\in\Fin 2^m} b_j \boldsymbol{\cdot} g(j) + g(i)\right) \\
+&= g^{-1}\left(\sum_{j\in\Fin 2^m} b_j \boldsymbol{\cdot} g(j) + g(k) - \sum_{j\in\Fin 2^m} b_j \boldsymbol{\cdot} g(j)\right) = g^{-1}(g(k)) = k.
+\end{align*}
+\end{proof}
+
+\verb|Mathlib hint:| \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Logic/Equiv/Defs.html#Equiv.symm}{g.symm}, \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Module/Defs.html#add_smul}{add\_smul}, \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/BigOperators/Group/Finset/Basic.html#Finset.sum_add_distrib}{Finset.sum\_add\_distrib}.
