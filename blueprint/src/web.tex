@@ -4,10 +4,9 @@
 % It is otherwise a very minimal preamble (you should probably at least
 % add cleveref and tikz-cd).
 
-\documentclass{amsart}
+\documentclass[12pt,a4paper]{amsart}
 
 \usepackage{amssymb, amsthm, amsmath}
-
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -25,10 +24,9 @@
 \input{macros/common}
 \input{macros/web}
 
-
-
 \home{https://mihaiancu.github.io/Puzzle}
 \github{https://github.com/mihaiancu/Puzzle}
+\dochome{https://mihaiancu.github.io/Puzzle/docs}
 
 \title{The (Almost) Impossible Puzzle}
 % \author{Mihai}
@@ -43,5 +41,35 @@
 \begin{center}
 \href{https://mihaiancu.github.io/Puzzle}{Home} \textbullet\ \href{https://github.com/mihaiancu/Puzzle}{GitHub}
 \end{center}
-\input{content}
+
+\begin{abstract}
+Tom, Jerry and Spike play the following game.
+Tom generates a random binary code of length $n$,
+which he sends to Spike along with a \textit{secret number}
+between 0 and $n-1$. Spike flips exactly one bit in the code
+and then sends only the modified binary code to Jerry.
+Is there a pre-established strategy for Spike and Jerry
+such that Jerry can determine the \textit{secret number}
+solely by looking at the code sent by Spike?
+\end{abstract}
+
+\input{definitions}
+
+\input{main_result}
+
+
+\input{lean_tactics}
+
+\input{fun_shift_inj}
+
+
+\input{fun_shift_sum}
+
+\input{modus_ponens}
+
+\input{modus_ponens_rev}
+
+\input{finish}
+
+
 \end{document}
