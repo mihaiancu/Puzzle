@@ -7,20 +7,41 @@
 \documentclass{amsart}
 
 \usepackage{amssymb, amsthm, amsmath}
-\usepackage{hyperref}
-\usepackage[showmore, dep_graph]{blueprint}
 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=blue,
+    pdftitle={The (Almost) Impossible Puzzle},
+    pdfpagemode=UseNone,
+    }
+
+
+\usepackage[showmore, dep_graph]{blueprint}
+\usepackage{xcolor}
 
 \input{macros/common}
 \input{macros/web}
 
+
+
 \home{https://mihaiancu.github.io/Puzzle}
 \github{https://github.com/mihaiancu/Puzzle}
 
-\title{Puzzle}
-\author{Mihai Iancu}
+\title{The (Almost) Impossible Puzzle}
+% \author{Mihai}
+
+
+\newcommand{\Zz}{\mathbb{Z}_2}
+\newcommand{\Fin}{\mathrm{Fin}\,}
+\newcommand{\B}{\color{blue}}
 
 \begin{document}
 \maketitle
+\begin{center}
+\href{https://mihaiancu.github.io/Puzzle}{Home} \textbullet\ \href{https://github.com/mihaiancu/Puzzle}{GitHub}
+\end{center}
 \input{content}
 \end{document}
