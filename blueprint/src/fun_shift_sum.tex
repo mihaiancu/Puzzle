@@ -4,11 +4,16 @@
 \bigskip
 
 \begin{lemma}
-\label{fun_shift_sum_one} If $f:\Zz^n \to \Fin n$ is \eqref{SF}, $b\in\Zz^n$, and $k\in\Fin n$, then
+\label{fun_shift_sum_one}
+\lean{fun_shift_sum_one}
+\leanok
+\uses{def:SF, def:d}
+If $f:\Zz^n \to \Fin n$ is \eqref{SF}, $b\in\Zz^n$, and $k\in\Fin n$, then
 $$\sum_{i\in\Fin n} \delta(f(b+{\rm e}_i),k) = 1.$$
 \end{lemma}
 
 \begin{proof}
+\uses{fun_shift_inj}
 Since $f$ is \eqref{SF}, we {\B obtain} $i_k\in\Fin n$ such that $f(b+{\rm e}_{i_k}) = k$.
 
 We shall {\B rewrite} the sum by proving that {\B only the $i_k$ term in the sum is equal to $1$, and the rest are $0$}.
@@ -23,11 +28,16 @@ Clearly, $\delta(f(b+{\rm e}_{i_k}),k) = 1$, in view of \eqref{d}.
 \bigskip
 
 \begin{lemma}
-\label{fun_shift_sum_pow2} If $f:\Zz^n \to \Fin n$ is \eqref{SF} and $k\in\Fin n$, then
+\label{fun_shift_sum_pow2}
+\lean{fun_shift_sum_pow2}
+\leanok
+\uses{def:SF, def:d}
+ If $f:\Zz^n \to \Fin n$ is \eqref{SF} and $k\in\Fin n$, then
 $$\sum_{b\in\Zz^n} \sum_{i\in\Fin n} \delta(f(b+{\rm e}_i),k) = 2^n.$$
 \end{lemma}
 
 \begin{proof}
+\uses{fun_shift_sum_one}
 By  {\B Lemma \ref{fun_shift_sum_one}} for {\B $f$} with the hypothesis \eqref{SF}, we {\B have}:
 $$\forall b\in\Zz^n, \sum_{i\in\Fin n} \delta(f(b+{\rm e}_i),k) = 1.$$ With {\B only} this relation, we can {\B simplify}
 $\displaystyle\sum_{b\in\Zz^n} \sum_{i\in\Fin n} \delta(f(b+{\rm e}_i),k)$ to  $\displaystyle\sum_{b\in\Zz^n} 1$,
@@ -37,7 +47,11 @@ which {\B simplifies} further to $2^n$.
 \bigskip
 
 \begin{lemma}
-\label{fun_shift_sum_rev} If $f:\Zz^n \to \Fin n$ is \eqref{SF} and $k,i\in\Fin n$, then
+\label{fun_shift_sum_rev}
+\lean{fun_shift_sum_rev}
+\leanok
+\uses{def:e, def:d}
+ If $f:\Zz^n \to \Fin n$ and $k,i\in\Fin n$, then
 $$\sum_{b\in\Zz^n} \delta(f(b+{\rm e}_i),k) = \sum_{b\in\Zz^n} \delta(f(b),k).$$
 \end{lemma}
 
