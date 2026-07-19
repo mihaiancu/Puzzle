@@ -9,7 +9,10 @@ Is there a pre-established strategy for Spike and Jerry
 such that Jerry can determine the *secret number*
 solely by looking at the code sent by Spike?
 
-We formalize in Lean 4, using Mathlib 4, the answer to this question, by characterizing all values of `n` for which such a strategy exists.
+
+Of course, you can play the role of Tom, but you can also play the role of Spike by running `puzzle_pos_flip.exe` and the role of Jerry by running `puzzle_neg_flip.exe`. Do these functions *always* work as expected?
+
+We formalize in Lean 4, using Mathlib 4, the characterization of all values of `n` for which such a strategy exists.
 
 The puzzle and its solution(s) have been discussed,  mainly focusing on the case `n=64` (often formulated as a chessboard puzzle), in the following references:
 * [Berry, N., *Impossible Escape?*, 2014](http://datagenetics.com/blog/december12014/index.html)
