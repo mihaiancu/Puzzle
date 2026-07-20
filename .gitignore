@@ -2,6 +2,8 @@
 .DS_Store
 ## Agents
 .agents/*
+## Scripts (template setup / dev-only helpers, not needed for build)
+/scripts/
 ## VS Code
 .vscode/*
 ## Lake
