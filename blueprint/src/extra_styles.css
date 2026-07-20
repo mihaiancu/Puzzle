@@ -9,7 +9,7 @@
  * any parent. So to make the text bigger everywhere (and keep proportions
  * consistent), scale the root font-size instead of a specific container. */
 html {
-	font-size: 120%;
+	font-size: 110%;
 }
 
 div.theorem_thmcontent {
