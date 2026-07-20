@@ -24,10 +24,10 @@ $\displaystyle\sum_{j \in \Fin n} e_{ij} \boldsymbol{\cdot} f(j) = f(i).$
 \end{lemma}
 
 \begin{proof}
-Unfolding \eqref{e}, $e_{ij} = 1$ if $i = j$ and $e_{ij} = 0$ otherwise. We shall {\B rewrite}  $\sum_{j \in \Fin n} e_{ij} \boldsymbol{\cdot} f(j)$ as $f(i)$, using the fact that the {\B single} term that contributes in the {\B sum} is the one with $j = i$.
+Unfolding \eqref{e}, $e_{ij} = 1$ if $i = j$ and $e_{ij} = 0$ otherwise. We {\B rewrite}  $\sum_{j \in \Fin n} e_{ij} \boldsymbol{\cdot} f(j)$ as $f(i)$, using the fact that the {\B single} term that contributes in the {\B sum} is the one with $j = i$.
 \end{proof}
 
-\verb|Mathlib hint:| \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Module/BigOperators.html#Fintype.sum_single_smul}{rw[Fintype.sum\_single\_smul]}.
+\verb|Mathlib hint:| \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Module/BigOperators.html#Fintype.sum_single_smul}{Fintype.sum\_single\_smul}.
 
 \bigskip
 
@@ -41,7 +41,7 @@ If $n = 2^m$ for some $m$, then the puzzle has a strategy for $n$.
 
 \begin{proof}
 \uses{bij_Fin, sum_basis}
-First, we {\B rewrite} $n$ as $2^m$ in \eqref{SF}. {\B Let} $g$ be given by {\B Definition} \ref{bij_Fin} and {\B use} $f : \Zz^n \to \Fin n$ given by
+First, we {\B rewrite} $n$ as $2^m$ in \eqref{SF}. {\B Let} $g$ be given by {\B Definition} \ref{bij_Fin} and {\B use} $f$ given by
 $$f(b) := g^{-1}\left(\sum_{j\in\Fin 2^m} b_j \boldsymbol{\cdot} g(j)\right), \quad b\in\Zz^n.$$
 
 {\B Introduce} $b\in\Zz^n$ and $k\in\Fin n$ in order to verify \eqref{SF} for $f$. In view of \eqref{SF}, we want to show

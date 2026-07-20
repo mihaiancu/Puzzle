@@ -2,6 +2,8 @@
 .DS_Store
 ## Agents
 .agents/*
+## VS Code
+.vscode/*
 ## Lake
 .lake/*
 .cache/*
