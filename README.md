@@ -9,7 +9,7 @@ Is there a pre-established strategy for Spike and Jerry
 such that Jerry can determine the *secret number* `k`
 solely by looking at the code sent by Spike?
 
-Of course, you can play the role of Tom, but you can also play the role of Spike by running `puzzle_pos_flip.exe` and the role of Jerry by running `puzzle_fun.exe`. Do these functions *always* work as expected?
+Of course, you can play the role of Tom, but you can also play the roles of Spike and Jerry by testing the functions in [TomJerrySpike.lean](TomJerrySpike.lean). Do these functions *always* work as expected?
 
 We formalize in Lean 4, using Mathlib 4, the characterization of all values of `n` for which such a strategy exists.
 

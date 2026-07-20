@@ -10,7 +10,7 @@ import Mathlib.Data.ZMod.Defs
 
 example (i : Fin 10) : i.val < 10 := sorry
 
-#check Fin.mk 0 (Nat.zero_lt_succ 9)
+#check (Fin.mk 0 (Nat.zero_lt_succ 9) : Fin 10)
 #check (⟨0, by exact?⟩ : Fin 10)
 #eval (⟨0, Nat.two_pos⟩ : Fin 2) = (⟨0, Nat.zero_lt_succ 1⟩ : Fin 2)
 -- example why `proof irrelevance` is crucial
