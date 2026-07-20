@@ -20,7 +20,7 @@ We shall {\B rewrite} the sum by proving that {\B only the $i_k$ term in the sum
 
 Clearly, $\delta(f(b+{\rm e}_{i_k}),k) = 1$, in view of \eqref{d}.
 
-{\B Introduce} $i\in\Fin n$ with $i\neq i_k$. {\B Rewritting} $k$ as  $f(b+{\rm e}_{i_k})$, $\delta(f(b+{\rm e}_i),k) = 0$, if we prove that $f(b+{\rm e}_i) \neq f(b+{\rm e}_{i_k})$. In order to get a {\B contradiction}, assume that $f(b+{\rm e}_i) = f(b+{\rm e}_{i_k})$. Then, by {\B Lemma} \ref{fun_shift_inj}, we {\B have} $i=i_k$, which is {\B false} in view of the assumption $i\neq i_k$.
+{\B Introduce} $i\in\Fin n$ with $i\neq i_k$. {\B Rewritting} $k$ as  $f(b+{\rm e}_{i_k})$ and {\B applying} the logic of {\B if-then-else} in \eqref{d}, we have to prove that $f(b+{\rm e}_i) \neq f(b+{\rm e}_{i_k})$. In order to get a {\B contradiction}, assume that $f(b+{\rm e}_i) = f(b+{\rm e}_{i_k})$. Then, by {\B Lemma} \ref{fun_shift_inj}, we {\B have} $i=i_k$, which is {\B false} in view of the assumption $i\neq i_k$.
 \end{proof}
 
 \verb|Mathlib hints:| \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Data/Fintype/BigOperators.html#Fintype.sum_eq_single}{rw [Fintype.sum\_eq\_single $i_k$]}, \href{https://leanprover-community.github.io/mathlib4_docs/Init/Core.html#if_pos}{if\_pos}, \href{https://leanprover-community.github.io/mathlib4_docs/Init/Core.html#if_neg}{if\_neg}.
@@ -38,7 +38,7 @@ $$\sum_{b\in\Zz^n} \sum_{i\in\Fin n} \delta(f(b+{\rm e}_i),k) = 2^n.$$
 
 \begin{proof}
 \uses{fun_shift_sum_one}
-By  {\B Lemma \ref{fun_shift_sum_one}} for {\B $f$} with the hypothesis \eqref{SF}, we {\B have}:
+By  {\B Lemma \ref{fun_shift_sum_one}}, we {\B have}:
 $$\forall b\in\Zz^n, \sum_{i\in\Fin n} \delta(f(b+{\rm e}_i),k) = 1.$$ With {\B only} this relation, we can {\B simplify}
 $\displaystyle\sum_{b\in\Zz^n} \sum_{i\in\Fin n} \delta(f(b+{\rm e}_i),k)$ to  $\displaystyle\sum_{b\in\Zz^n} 1$,
 which {\B simplifies} further to $2^n$.
@@ -56,7 +56,7 @@ $$\sum_{b\in\Zz^n} \delta(f(b+{\rm e}_i),k) = \sum_{b\in\Zz^n} \delta(f(b),k).$$
 \end{lemma}
 
 \begin{proof}
-{\B Let} $ g: \Zz^n \to \Zz^n, g(b) = b + {\rm e}_i$. Then $g$ is {\B bijective}. {\B Applying} the fact that $g$ is {\B bijective} to our  {\B finite} sum, the equality holds, because $\displaystyle\sum_{b\in\Zz^n} \delta(f(g(b)),k)=\sum_{b\in\Zz^n} \delta(f(b + {\rm e}_i),k).$
+{\B Let} $ g: \Zz^n \to \Zz^n, g(b) = b + {\rm e}_i$. Then we {\B have} that $g$ is {\B bijective}. {\B Applying} the fact that $g$ is {\B bijective} to our  {\B finite} sum, the equality holds, because $\displaystyle\sum_{b\in\Zz^n} \delta(f(g(b)),k)$ is {\B simply} $\displaystyle\sum_{b\in\Zz^n}\delta(f(b + {\rm e}_i),k).$
 \end{proof}
 
-\verb|Mathlib hints:| \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Logic/Function/Defs.html#Function.Bijective}{Function.Bijective}, \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Group/Defs.html#add_left_injective}{add\_left\_injective}, \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Group/Basic.html#add_right_surjective}{add\_right\_surjective}, \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/BigOperators/Group/Finset/Defs.html#Fintype.sum_bijective}{Fintype.sum\_bijective}.
+\noindent\verb|Mathlib hints:| \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Logic/Function/Defs.html#Function.Bijective}{Function.Bijective}, \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Group/Defs.html#add_left_injective}{add\_left\_injective}, \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Group/Basic.html#add_right_surjective}{add\_right\_surjective}, \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/BigOperators/Group/Finset/Defs.html#Fintype.sum_bijective}{Fintype.sum\_bijective}.
