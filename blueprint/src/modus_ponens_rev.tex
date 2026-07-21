@@ -7,7 +7,7 @@
 \lean{bij_Fin}
 \leanok
 \uses{def:Z2^n}
-For $m\in\mathbb{N}$, let $g : \Fin (2^m) \to \Zz^m$ be a bijective function. $g$ exists, {\B applying} the fact that $\Fin (2^m)$ and $\Zz^m$ have {\B equal cardinals}.
+For $m\in\mathbb{N}$, let $g : \Fin (2^m) \to \Zz^m$ be a bijective function. $g$ exists, {\B applying} the fact that $\Fin (2^m)$ and $\Zz^m$ {\B simply} have {\B equal cardinals}.
 \end{definition}
 
 \verb|Mathlib hint:| \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Data/Fintype/EquivFin.html#Fintype.equivOfCardEq}{Fintype.equivOfCardEq}.
@@ -24,7 +24,7 @@ $\displaystyle\sum_{j \in \Fin n} e_{ij} \boldsymbol{\cdot} f(j) = f(i).$
 \end{lemma}
 
 \begin{proof}
-Unfolding \eqref{e}, $e_{ij} = 1$ if $i = j$ and $e_{ij} = 0$ otherwise. We {\B rewrite}  $\sum_{j \in \Fin n} e_{ij} \boldsymbol{\cdot} f(j)$ as $f(i)$, using the fact that the {\B single} term that contributes in the {\B sum} is the one with $j = i$.
+By the definition of \eqref{e}, $e_{ij} = 1$ if $i = j$ and $e_{ij} = 0$ otherwise. We {\B rewrite}  $\sum_{j \in \Fin n} e_{ij} \boldsymbol{\cdot} f(j)$ as $f(i)$, using the fact that the {\B single} term that contributes in the {\B sum} is the one with $j = i$.
 \end{proof}
 
 \verb|Mathlib hint:| \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Module/BigOperators.html#Fintype.sum_single_smul}{Fintype.sum\_single\_smul}.
@@ -42,9 +42,9 @@ If $n = 2^m$ for some $m$, then the puzzle has a strategy for $n$.
 \begin{proof}
 \uses{bij_Fin, sum_basis}
 First, we {\B rewrite} $n$ as $2^m$ in \eqref{SF}. {\B Let} $g$ be given by {\B Definition} \ref{bij_Fin} and {\B use} $f$ given by
-$$f(b) := g^{-1}\left(\sum_{j\in\Fin 2^m} b_j \boldsymbol{\cdot} g(j)\right), \quad b\in\Zz^n.$$
+$$f(b) := g^{-1}\left(\sum_{j\in\Fin 2^m} b_j \boldsymbol{\cdot} g(j)\right).$$
 
-{\B Introduce} $b\in\Zz^n$ and $k\in\Fin n$ in order to verify \eqref{SF} for $f$. In view of \eqref{SF}, we want to show
+{\B Introduce} $b\in\Zz^n$ and $k\in\Fin n$ in order to verify \eqref{SF} for $f$. We want to show
 $$\exists\,i\in\Fin n, f(b + {\rm e}_i) = g^{-1}\left(\sum_{j\in\Fin 2^m} (b_j + e_{ij}) \boldsymbol{\cdot} g(j)\right) = k.$$
 
 We {\B simplify} the above relation using the {\B distributivity of the scalar multiplication over addition} and over {\B sum} to get

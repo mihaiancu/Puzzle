@@ -7,7 +7,7 @@
 \lean{strategy_pow2}
 \leanok
 \uses{def:SF}
-If $0<n$ and $f:\Zz^n \to \Fin n$ is \eqref{SF}, then $\exists N\in\mathbb{N}, n\cdot N = 2^n$.
+If $0<n$ and $f:\Zz^n \to \Fin n$ is \eqref{SF}, then $\exists\, N\in\mathbb{N}, n\cdot N = 2^n$.
 \end{lemma}
 
 \begin{proof}
@@ -20,7 +20,7 @@ $$ \sum_{i\in\Fin n} \sum_{b\in\Zz^n} \delta(f(b+{\rm e}_i),k) = 2^n.$$
 Using {\B Lemma} \ref{fun_shift_sum_rev}, we {\B simplify} this to have
 $$\sum_{i\in\Fin n} \sum_{b\in\Zz^n} \delta(f(b),k) = n \cdot \sum_{b\in\Zz^n} \delta(f(b),k) = 2^n.$$
 
-We {\B use} $N := \sum_{b\in\Zz^n} \delta(f(b),k)$ to finish the proof.
+We {\B use} $N := \displaystyle\sum_{b\in\Zz^n} \delta(f(b),k)$ to finish the proof.
 \end{proof}
 
 \verb|Mathlib hint:| \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/BigOperators/Group/Finset/Sigma.html#Finset.sum_comm}{Finset.sum\_comm}.
@@ -31,11 +31,11 @@ We {\B use} $N := \sum_{b\in\Zz^n} \delta(f(b),k)$ to finish the proof.
 \label{mul_pow2}
 \lean{mul_pow2}
 \leanok
-If $\exists N\in\mathbb{N}, n\cdot N = 2^n$, then $\exists m\in\mathbb{N}, n = 2^m$.
+If $\exists\, N\in\mathbb{N}, n\cdot N = 2^n$, then $\exists\, m\in\mathbb{N}, n = 2^m$.
 \end{lemma}
 
 \begin{proof}
-From the hypothesis, we {\B obtain} $N$ such that $n\cdot N = 2^n$. So, we {\B have} $n$ {\B divides} $2^n$. Since {\B  $2$ is prime}, $\exists\,m\in\mathbb{N}, n = 2^m$.
+From the hypothesis, we {\B obtain} $N$ such that $n\cdot N = 2^n$. So, we {\B have} $n$ {\B divides} $2^n$. Since {\B  $2$ is prime}, we {\B obtain} $m\in\mathbb{N}$ to be {\B used} in $n = 2^m$.
 \end{proof}
 
 \verb|Mathlib hints:| \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Divisibility/Basic.html#Dvd.intro}{Dvd.intro}, \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Data/Nat/Prime/Defs.html#Nat.prime_two}{Nat.prime\_two}, \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Data/Nat/Prime/Basic.html#Nat.dvd_prime_pow}{Nat.dvd\_prime\_pow}.
