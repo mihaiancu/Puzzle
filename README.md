@@ -1,6 +1,6 @@
 # The (Almost) Impossible Puzzle
 
-Tom, Jerry and Spike play the following game.
+Tom, Jerry, and Spike play the following game.
 Tom generates a random binary code of length `n`,
 which he sends to Spike along with a *secret number* `k`
 between `0` and `n-1`. Spike flips exactly one bit in the code
