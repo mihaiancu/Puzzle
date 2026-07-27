@@ -9,7 +9,7 @@ usemathjax: true
 This project is part of [Lean-Cluj Summer School 2026](https://github.com/Lean-Cluj/summer-school-2026/).
 
 
-Tom, Jerry and Spike play the following game.
+Tom, Jerry, and Spike play the following game.
 Tom generates a random binary code of length `n`,
 which he sends to Spike along with a *secret number* `k`
 between 0 and `n-1`. Spike flips exactly one bit in the code
