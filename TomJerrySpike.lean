@@ -19,8 +19,6 @@ def Spike (x : Tom_codes)  : List (Fin 2) :=
 def Tom : Tom_codes :=
   { code := [0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0], k := 7 }
 
-#eval Tom.code.length
-
 #eval Tom.code
 #eval Spike Tom
 #eval Jerry (Spike Tom)
