@@ -10,7 +10,7 @@ Let \href{https://leanprover-community.github.io/mathlib4_docs/Init/Prelude.html
 \medskip
 
 \begin{definition}
-\label{def:Z2^n}
+\label{def:Z2n}
 \lean{Z2}
 \leanok
 $\Zz^n := \Zz\times...\times\Zz$. $\Zz^n$ can be seen as the set of all functions from $\Fin n$ to $\Zz$. In this file, we consider $\Zz^n$ as a \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Module/Defs.html#Module}{module} over $\Zz$.
@@ -22,7 +22,7 @@ $\Zz^n := \Zz\times...\times\Zz$. $\Zz^n$ can be seen as the set of all function
 \label{def:e}
 \lean{e}
 \leanok
-\uses{def:Z2^n}
+\uses{def:Z2n}
 For $i\in \Fin n$, let ${\rm e}_i\in\Zz^n$ be the canonical vector with
 $1$ on the $i$-th position and zeros elsewhere
 \renewcommand{\theequation}{e}
@@ -45,7 +45,7 @@ for every $b\in\Zz^n$ and $i\in \Fin n$.
 \label{def:SF}
 \lean{SF}
 \leanok
-\uses{def:Z2^n, def:e}
+\uses{def:Z2n, def:e}
 We say that $f:\Zz^n \to \Fin n$ is a {\bf strategy function}, if
 \renewcommand{\theequation}{SF}
 \begin{equation}
@@ -64,7 +64,7 @@ $$\exists\, f: \Zz^n \to \Fin n, \; \text{(SF)}.$$
 \label{def:d}
 \lean{δ}
 \leanok
-\uses{def:Z2^n}
+\uses{def:Z2n}
 Let $\delta: \Fin n \times \Fin n \to \mathbb{N}$ be given by
 \renewcommand{\theequation}{d}
 \begin{equation}
