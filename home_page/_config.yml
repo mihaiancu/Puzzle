@@ -27,6 +27,14 @@ twitter_username:
 github_username: mihaiancu
 repository: mihaiancu/Puzzle
 
+# GitHub Pages enables jekyll-relative-links by default. It rewrites relative
+# links in Markdown to `baseurl + page.url`, which with an empty baseurl turns
+# [demo](app.html) into /app.html instead of /Puzzle/app.html. Turning it off
+# leaves relative links alone, so they resolve against the page they sit on --
+# the same way the header buttons in _layouts/default.html already do.
+relative_links:
+  enabled: false
+
 # Build settings
 remote_theme: pages-themes/cayman@v0.2.0
 plugins:
