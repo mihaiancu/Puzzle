@@ -156,6 +156,18 @@ layout: default
 
   .ppf-legend { font-size: 0.85rem; color: var(--ppf-mute); }
 
+  .ppf-code {
+    font-family: Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    background: var(--ppf-soft);
+    border: 1px solid var(--ppf-line);
+    border-radius: 5px;
+    padding: 0.8rem 1rem;
+    overflow-x: auto;
+    margin: 0.8rem 0;
+  }
+
   .ppf-fieldlabel {
     display: block;
     font-size: 0.8rem;
@@ -173,7 +185,7 @@ layout: default
 <h1>Interactive demo</h1>
 
 <p>Tom sends Spike a binary code of length <code>n</code> together with a secret
-key <code>k</code>. Spike flips exactly one bit and forwards
+key <code>k</code> between <code>0</code> and <code>n-1</code>. Spike flips exactly one bit and forwards
 the modified code to Jerry, who must recover <code>k</code>.</p>
 
 <div class="ppf-card">
@@ -219,6 +231,50 @@ the modified code to Jerry, who must recover <code>k</code>.</p>
   <p class="ppf-answer">Secret key announced:
     <span class="ppf-big" id="ppf-guess">&mdash;</span><span class="ppf-mark" id="ppf-mark"></span></p>
   <p class="ppf-legend" id="ppf-verdict"></p>
+</div>
+
+<div class="ppf-card">
+  <h3>The Lean code behind this page</h3>
+
+  <p>The strategy above is the Lean 4 code below, from
+  <a href="https://github.com/mihaiancu/Puzzle/blob/main/TomJerrySpike.lean"><code>TomJerrySpike.lean</code></a>
+  in the repository: the code shown as sent is what <code>Spike</code> returns, and the
+  announced key is <code>Jerry</code> applied to it.</p>
+
+  <pre class="ppf-code"><code>--------------------------PRE-ESTABLISHED STRATEGY--------------------------
+structure Tom_codes where (code : List (Fin 2)) (secret_k : Nat)
+
+def Jerry (code : List (Fin 2)) : Nat :=
+  let ones_pos : List Nat :=
+    ((List.range code.length).zip code |>.filter (fun (_, b) => b != 0)).map (·.1)
+  ones_pos.foldl (· ^^^ ·) 0
+
+def Spike (x : Tom_codes)  : List (Fin 2) :=
+  let flip_code :=
+    x.code.mapIdx (fun idx b => if idx == x.secret_k then (if b == 0 then 1 else 0) else b)
+  let flip_pos : Nat := Jerry flip_code
+  x.code.mapIdx (fun idx b => if idx == flip_pos then (if b == 0 then 1 else 0) else b)
+
+----------------------------------------------------------------------------
+-------------------------------- TESTING -----------------------------------
+----------------------------------------------------------------------------
+
+def Tom : Tom_codes :=
+  { code := [0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0], secret_k := 7 }
+
+#eval Tom.code
+#eval Spike Tom
+#eval Jerry (Spike Tom)</code></pre>
+
+  <p>You can test the code in <a href="https://live.lean-lang.org/">Lean 4 web editor</a>. The three <code>#eval</code> lines print:</p>
+
+  <pre class="ppf-code"><code>[0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0]
+[0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0]
+7</code></pre>
+
+  <p>Spike flipped position <code>2</code>, and <code>Jerry (Spike Tom)</code> gives back
+  <code>7</code> — Tom’s secret key. To watch the same example above, set the length to
+  <code>16</code>, enter that code, and set the secret key to <code>7</code>.</p>
 </div>
 
 </div>
@@ -351,10 +407,6 @@ the modified code to Jerry, who must recover <code>k</code>.</p>
     el.guess.textContent = String(got);
     el.mark.className = 'ppf-mark ' + (got === state.k ? 'ok' : 'no');
     el.mark.textContent = got === state.k ? '✓' : '✗';
-    el.verdict.innerHTML = 'Jerry computes <code>f(' + sent.join('') + ') = ' + got + '</code>. ' +
-      (got === state.k
-        ? 'That is Tom’s secret key.'
-        : 'Tom’s secret key was <code>' + state.k + '</code>.');
   }
 
   /* ---- input wiring ---- */
