@@ -1,0 +1,387 @@
+---
+layout: default
+---
+
+<style>
+  .ppf {
+    --ppf-accent: #159957;
+    --ppf-accent-dark: #0f7040;
+    --ppf-link: #1e6bb8;
+    --ppf-line: #dce6f0;
+    --ppf-soft: #f6f8fa;
+    --ppf-ink: #24292f;
+    --ppf-mute: #6a737d;
+    --ppf-bad: #b3282d;
+    --ppf-bad-soft: #fdf0f0;
+  }
+
+  .ppf-card {
+    border: 1px solid var(--ppf-line);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    background: #fff;
+  }
+
+  .ppf-card > h3:first-child {
+    margin-top: 0;
+  }
+
+  .ppf-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.75rem 1.25rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .ppf-field label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--ppf-mute);
+    margin-bottom: 0.2rem;
+  }
+
+  .ppf input[type="number"] {
+    font: inherit;
+    padding: 0.35rem 0.5rem;
+    border: 1px solid var(--ppf-line);
+    border-radius: 5px;
+    background: #fff;
+    color: var(--ppf-ink);
+    width: 5.5rem;
+  }
+
+  .ppf-btn {
+    font: inherit;
+    font-size: 0.9rem;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid var(--ppf-line);
+    border-radius: 5px;
+    background: var(--ppf-soft);
+    color: var(--ppf-ink);
+    cursor: pointer;
+  }
+
+  .ppf-btn:hover { background: #eaeff4; }
+
+  .ppf-btngroup { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  /* ---- bit board ---- */
+  .ppf-board {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 0.6rem 0;
+  }
+
+  .ppf-cell {
+    width: 2.6rem;
+    border: 1px solid var(--ppf-line);
+    border-radius: 5px;
+    background: var(--ppf-soft);
+    padding: 0.15rem 0 0.3rem;
+    text-align: center;
+    font: inherit;
+    cursor: pointer;
+    color: var(--ppf-ink);
+  }
+
+  .ppf-cell .ppf-pos {
+    display: block;
+    font-size: 0.65rem;
+    color: var(--ppf-mute);
+    line-height: 1.2;
+  }
+
+  .ppf-cell .ppf-bit {
+    display: block;
+    font-family: Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .ppf-cell.on {
+    background: #e7f4ec;
+    border-color: var(--ppf-accent);
+  }
+
+  .ppf-cell.on .ppf-bit { color: var(--ppf-accent-dark); }
+
+  .ppf-cell.flip {
+    outline: 3px solid #e8a33d;
+    outline-offset: 1px;
+  }
+
+  .ppf-board.readonly .ppf-cell { cursor: default; }
+
+  /* ---- results ---- */
+  .ppf-answer {
+    font-size: 1.05rem;
+    margin: 0.4rem 0 0.8rem;
+  }
+
+  .ppf-big {
+    font-family: Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ppf-accent-dark);
+    vertical-align: -0.05em;
+  }
+
+  .ppf-note {
+    border-left: 4px solid var(--ppf-accent);
+    background: var(--ppf-soft);
+    padding: 0.6rem 0.9rem;
+    border-radius: 0 5px 5px 0;
+    font-size: 0.92rem;
+  }
+
+  .ppf-note.bad {
+    border-left-color: var(--ppf-bad);
+    background: var(--ppf-bad-soft);
+  }
+
+  .ppf-note.bad strong { color: var(--ppf-bad); }
+
+  .ppf-mark {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-left: 0.5rem;
+  }
+
+  .ppf-mark.ok { color: var(--ppf-accent-dark); }
+  .ppf-mark.no { color: var(--ppf-bad); }
+
+  .ppf-legend { font-size: 0.85rem; color: var(--ppf-mute); }
+
+  .ppf-fieldlabel {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--ppf-mute);
+    margin-bottom: 0.2rem;
+  }
+
+  @media (max-width: 480px) {
+    .ppf-cell { width: 2.2rem; }
+  }
+</style>
+
+<div class="ppf">
+
+<h1>Interactive demo</h1>
+
+<p>Tom sends Spike a binary code of length <code>n</code> together with a secret
+key <code>k</code>. Spike flips exactly one bit and forwards
+the modified code to Jerry, who must recover <code>k</code>.</p>
+
+<div class="ppf-card">
+  <h3>Tom</h3>
+
+  <div class="ppf-row">
+    <div class="ppf-field">
+      <label for="ppf-n">Length n</label>
+      <input type="number" id="ppf-n" min="1" max="64" value="8">
+    </div>
+    <div class="ppf-field">
+      <label>Code</label>
+      <div class="ppf-btngroup">
+        <button class="ppf-btn" id="ppf-random">Randomize</button>
+        <button class="ppf-btn" id="ppf-clear">All zeros</button>
+      </div>
+    </div>
+  </div>
+
+  <span class="ppf-fieldlabel">Binary code</span>
+  <div class="ppf-board" id="ppf-board"></div>
+  <p class="ppf-legend">Click a cell to toggle it. Positions are numbered
+  <code>0</code> to <code>n&minus;1</code>.</p>
+
+  <div class="ppf-field">
+    <label for="ppf-k">Secret key k</label>
+    <input type="number" id="ppf-k" value="0">
+  </div>
+</div>
+
+<div class="ppf-card">
+  <h3>Spike</h3>
+  <p class="ppf-answer">Position to flip: <span class="ppf-big" id="ppf-answer">&mdash;</span></p>
+  <div id="ppf-warning"></div>
+</div>
+
+<div class="ppf-card">
+  <h3>Jerry</h3>
+  <span class="ppf-fieldlabel" id="ppf-recvlabel">Code received</span>
+  <div class="ppf-board readonly" id="ppf-board2"></div>
+  <p class="ppf-answer">Secret key announced:
+    <span class="ppf-big" id="ppf-guess">&mdash;</span><span class="ppf-mark" id="ppf-mark"></span></p>
+  <p class="ppf-legend" id="ppf-verdict"></p>
+</div>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---- Direct port of Day3_files/puzzle_pos_flip/Main.lean ---- */
+
+  function f(binCode) {
+    var onesPos = [];
+    for (var i = 0; i < binCode.length; i++) {
+      if (binCode[i] !== 0) { onesPos.push(i); }
+    }
+    return onesPos.reduce(function (a, b) { return a ^ b; }, 0);
+  }
+
+  function flipBit(binCode, i) {
+    return binCode.map(function (b, idx) {
+      return idx === i ? (b === 0 ? 1 : 0) : b;
+    });
+  }
+
+  // kVal is numbered from 1, as the executable reads it. Nat subtraction
+  // truncates at zero, so k = 0 behaves exactly like k = 1.
+  function positionToFlip(binCode, kVal) {
+    return 1 + f(flipBit(binCode, kVal >= 1 ? kVal - 1 : 0));
+  }
+
+  function isPowerOfTwo(n) { return n > 0 && (n & (n - 1)) === 0; }
+
+  /* ---- state ---- */
+
+  var MAX_N = 64;
+  var state = { bits: [1, 0, 1, 1, 0, 0, 1, 0], k: 0 };
+
+  var el = {
+    n: document.getElementById('ppf-n'),
+    k: document.getElementById('ppf-k'),
+    board: document.getElementById('ppf-board'),
+    board2: document.getElementById('ppf-board2'),
+    answer: document.getElementById('ppf-answer'),
+    warning: document.getElementById('ppf-warning'),
+    recvLabel: document.getElementById('ppf-recvlabel'),
+    guess: document.getElementById('ppf-guess'),
+    mark: document.getElementById('ppf-mark'),
+    verdict: document.getElementById('ppf-verdict')
+  };
+
+  function drawBoard(container, bits, flipIdx, clickable) {
+    container.textContent = '';
+    bits.forEach(function (b, i) {
+      var cell = document.createElement(clickable ? 'button' : 'div');
+      cell.className = 'ppf-cell' + (b ? ' on' : '') + (i === flipIdx ? ' flip' : '');
+      if (clickable) {
+        cell.type = 'button';
+        cell.setAttribute('aria-label', 'Position ' + i + ', bit ' + b);
+        cell.addEventListener('click', function () {
+          state.bits = flipBit(state.bits, i);
+          render();
+        });
+      }
+      var pos = document.createElement('span');
+      pos.className = 'ppf-pos';
+      pos.textContent = i;
+      var bit = document.createElement('span');
+      bit.className = 'ppf-bit';
+      bit.textContent = b;
+      cell.appendChild(pos);
+      cell.appendChild(bit);
+      container.appendChild(cell);
+    });
+  }
+
+  function note(html, bad) {
+    return '<div class="ppf-note' + (bad ? ' bad' : '') + '">' + html + '</div>';
+  }
+
+  function render() {
+    var bits = state.bits;
+    var n = bits.length;
+
+    // keep k inside range
+    if (state.k > n - 1) { state.k = Math.max(0, n - 1); }
+    if (state.k < 0) { state.k = 0; }
+
+    el.n.value = n;
+    el.k.min = 0;
+    el.k.max = n - 1;
+    if (el.k !== document.activeElement) { el.k.value = state.k; }
+
+    // positionToFlip numbers from 1 like the executable; subtract to get the index
+    var flip = positionToFlip(bits, state.k + 1) - 1;
+    var reachable = flip < n;
+
+    drawBoard(el.board, bits, reachable ? flip : -1, true);
+
+    // ---- Spike ----
+    el.answer.textContent = reachable ? String(flip) : '—';
+    el.warning.innerHTML = !reachable
+      ? note('<strong>No legal flip.</strong> The strategy asks for position <code>' + flip +
+          '</code>, but the code only has ' + n + ' bits (positions <code>0</code> to <code>' +
+          (n - 1) + '</code>). Spike cannot encode <code>k = ' + state.k +
+          '</code>, so he forwards the code unchanged.', true)
+      : (!isPowerOfTwo(n)
+          ? note('This particular case works, but <code>n = ' + n + '</code> is not a power of ' +
+              'two, so some other <code>(code, k)</code> pair has no legal flip.')
+          : '');
+
+    // ---- Jerry ----
+    // He reads off f of whatever reaches him, so he always names a key.
+    var sent = reachable ? flipBit(bits, flip) : bits;
+    var got = f(sent);
+
+    el.recvLabel.textContent = reachable
+      ? 'Code received (flipped bit outlined)'
+      : 'Code received (unchanged — Spike had no legal flip)';
+    drawBoard(el.board2, sent, reachable ? flip : -1, false);
+
+    el.guess.textContent = String(got);
+    el.mark.className = 'ppf-mark ' + (got === state.k ? 'ok' : 'no');
+    el.mark.textContent = got === state.k ? '✓' : '✗';
+    el.verdict.innerHTML = 'Jerry computes <code>f(' + sent.join('') + ') = ' + got + '</code>. ' +
+      (got === state.k
+        ? 'That is Tom’s secret key.'
+        : 'Tom’s secret key was <code>' + state.k + '</code>.');
+  }
+
+  /* ---- input wiring ---- */
+
+  function setLength(n) {
+    n = Math.max(1, Math.min(MAX_N, n | 0));
+    var bits = state.bits.slice(0, n);
+    while (bits.length < n) { bits.push(0); }
+    state.bits = bits;
+    render();
+  }
+
+  el.n.addEventListener('input', function () {
+    var v = parseInt(el.n.value, 10);
+    if (!isNaN(v) && v >= 1 && v <= MAX_N) { setLength(v); }
+  });
+
+  el.n.addEventListener('blur', render);
+
+  el.k.addEventListener('input', function () {
+    var v = parseInt(el.k.value, 10);
+    if (isNaN(v)) { return; }
+    state.k = Math.max(0, Math.min(state.bits.length - 1, v));
+    render();
+  });
+
+  el.k.addEventListener('blur', render);
+
+  document.getElementById('ppf-random').addEventListener('click', function () {
+    state.bits = state.bits.map(function () { return Math.random() < 0.5 ? 0 : 1; });
+    render();
+  });
+
+  document.getElementById('ppf-clear').addEventListener('click', function () {
+    state.bits = state.bits.map(function () { return 0; });
+    render();
+  });
+
+  render();
+}());
+</script>

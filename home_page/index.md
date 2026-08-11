@@ -20,4 +20,6 @@ solely by looking at the code sent by Spike?
 
 We formalize in Lean 4, using Mathlib 4, the answer to this question, by characterizing all values of `n` for which such a strategy exists.
 
+Of course, you can play the role of Tom, but you can also play the roles of Spike and Jerry by testing the functions in [this interactive demo page](app.html). Do Spike and Jerry *always* succeed?
+
 See [this paper](https://www.math.ubbcluj.ro/~didactica/pdfs/vadid.php?n=2025-13.pdf) and the references therein  for various solutions to the puzzle.
