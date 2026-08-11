@@ -18,7 +18,7 @@ Is there a pre-established strategy for Spike and Jerry
 such that Jerry can determine the *secret number* `k`
 solely by looking at the code sent by Spike?
 
-Of course, you can play the role of Tom, but you can also play the roles of Spike and Jerry by testing the functions in [this interactive demo page](app.html). Do Spike and Jerry *always* succeed?
+Of course, you can play the role of Tom, but you can also play the roles of Spike and Jerry in [this interactive demo page](app.html). Do Spike and Jerry *always* succeed?
 
 We formalize in Lean 4, using Mathlib 4, the solution to this puzzle, by characterizing all values of `n` for which such a strategy exists.
 

@@ -207,6 +207,8 @@ the modified code to Jerry, who must recover <code>k</code>.</p>
 <div class="ppf-card">
   <h3>Spike</h3>
   <p class="ppf-answer">Position to flip: <span class="ppf-big" id="ppf-answer">&mdash;</span></p>
+  <span class="ppf-fieldlabel" id="ppf-sentlabel">Code sent</span>
+  <div class="ppf-board readonly" id="ppf-board-spike"></div>
   <div id="ppf-warning"></div>
 </div>
 
@@ -258,8 +260,10 @@ the modified code to Jerry, who must recover <code>k</code>.</p>
     n: document.getElementById('ppf-n'),
     k: document.getElementById('ppf-k'),
     board: document.getElementById('ppf-board'),
+    boardSpike: document.getElementById('ppf-board-spike'),
     board2: document.getElementById('ppf-board2'),
     answer: document.getElementById('ppf-answer'),
+    sentLabel: document.getElementById('ppf-sentlabel'),
     warning: document.getElementById('ppf-warning'),
     recvLabel: document.getElementById('ppf-recvlabel'),
     guess: document.getElementById('ppf-guess'),
@@ -313,10 +317,18 @@ the modified code to Jerry, who must recover <code>k</code>.</p>
     var flip = positionToFlip(bits, state.k + 1) - 1;
     var reachable = flip < n;
 
-    drawBoard(el.board, bits, reachable ? flip : -1, true);
+    drawBoard(el.board, bits, -1, true);
+
+    // The code Spike forwards: Tom's code with the one bit flipped, or the
+    // untouched code when the strategy asks for a position off the board.
+    var sent = reachable ? flipBit(bits, flip) : bits;
 
     // ---- Spike ----
     el.answer.textContent = reachable ? String(flip) : '—';
+    el.sentLabel.textContent = reachable
+      ? 'Code sent (flipped bit highlighted)'
+      : 'Code sent (unchanged)';
+    drawBoard(el.boardSpike, sent, reachable ? flip : -1, false);
     el.warning.innerHTML = !reachable
       ? note('<strong>No legal flip.</strong> The strategy asks for position <code>' + flip +
           '</code>, but the code only has ' + n + ' bits (positions <code>0</code> to <code>' +
@@ -329,13 +341,12 @@ the modified code to Jerry, who must recover <code>k</code>.</p>
 
     // ---- Jerry ----
     // He reads off f of whatever reaches him, so he always names a key.
-    var sent = reachable ? flipBit(bits, flip) : bits;
     var got = f(sent);
 
     el.recvLabel.textContent = reachable
-      ? 'Code received (flipped bit outlined)'
+      ? 'Code received'
       : 'Code received (unchanged — Spike had no legal flip)';
-    drawBoard(el.board2, sent, reachable ? flip : -1, false);
+    drawBoard(el.board2, sent, -1, false);
 
     el.guess.textContent = String(got);
     el.mark.className = 'ppf-mark ' + (got === state.k ? 'ok' : 'no');
