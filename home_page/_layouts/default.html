@@ -30,6 +30,9 @@
     {% if page.url != "/" and page.url != "/index.html" %}
     <a href="index.html" class="btn">Home</a>
     {% endif %}
+    {% if page.url != "/app.html" %}
+    <a href="app.html" class="btn">Interactive demo</a>
+    {% endif %}
     <a href="blueprint" class="btn">Blueprint (web)</a>
     <a href="blueprint.pdf" class="btn">Blueprint (pdf)</a>
 	<a href="docs/Puzzle/Solution.html" class="btn">Documentation</a>
