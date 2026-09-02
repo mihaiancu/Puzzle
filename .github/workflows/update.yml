@@ -1,5 +1,13 @@
 name: Update Dependencies
 
+# NOTE: This project pins Mathlib and doc-gen4 to a release tag via `rev` in
+# lakefile.toml. This workflow bumps `lean-toolchain` and refreshes the manifest,
+# but it does NOT rewrite those pins, so a run would leave the toolchain ahead of
+# the pinned Mathlib and fail (creating an issue, per `on_update_fails` below).
+#
+# Use `scripts/update.sh` instead: it moves the pins, the toolchain and the
+# manifest together. Run this workflow only after the pins are removed.
+
 on:
   # schedule:             # Sets a schedule to trigger the workflow
   #   - cron: "0 8 * * *" # Every day at 08:00 AM UTC (see https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#schedule)

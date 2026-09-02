@@ -40,10 +40,10 @@ If $n = 2^m$ for some $m$, then the puzzle has a strategy for $n$.
 
 \begin{proof}
 \uses{bij_Fin, sum_basis}
-First, we {\B rewrite} $n$ as $2^m$ in \eqref{SF}. {\B Let} $g$ be given by {\B Definition} \ref{bij_Fin} and {\B use} $f$ given by
-$$f(b) := g^{-1}\left(\sum_{j\in\Fin 2^m} b_j \boldsymbol{\cdot} g(j)\right).$$
+First, we {\B rewrite} $n$ as $2^m$ in the definition of \eqref{SF}. {\B Let} $g$ be given by {\B Definition} \ref{bij_Fin} and {\B use} for $f$ in \eqref{SF} the function
+$$b\mapsto g^{-1}\left(\sum_{j\in\Fin 2^m} b_j \boldsymbol{\cdot} g(j)\right).$$
 
-{\B Introduce} $b\in\Zz^n$ and $k\in\Fin n$ in order to verify \eqref{SF} for $f$. We want to show
+{\B Introduce} $b\in\Zz^n$ and $k\in\Fin n$ in order to verify the conditions of \eqref{SF}. We want to show
 $$\exists\,i\in\Fin n, f(b + {\rm e}_i) = g^{-1}\left(\sum_{j\in\Fin 2^m} (b_j + e_{ij}) \boldsymbol{\cdot} g(j)\right) = k.$$
 
 We {\B simplify} the above relation using the {\B distributivity of the scalar multiplication over addition} and over {\B sum} to get
