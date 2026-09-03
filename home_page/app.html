@@ -194,7 +194,7 @@ the modified code to Jerry, who must recover <code>k</code>.</p>
   <div class="ppf-row">
     <div class="ppf-field">
       <label for="ppf-n">Length n</label>
-      <input type="number" id="ppf-n" min="1" max="64" value="8">
+      <input type="number" id="ppf-n" min="1" max="64" value="16">
     </div>
     <div class="ppf-field">
       <label>Code</label>
@@ -310,7 +310,7 @@ def Tom : Tom_codes :=
   /* ---- state ---- */
 
   var MAX_N = 64;
-  var state = { bits: [1, 0, 1, 1, 0, 0, 1, 0], k: 0 };
+  var state = { bits: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], k: 0 };
 
   var el = {
     n: document.getElementById('ppf-n'),
