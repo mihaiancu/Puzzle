@@ -142,5 +142,8 @@
             "env": {}
         }
     ],
-    "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/blueprint/print"
+    // The `latexmk` tool above runs with `-cd` and no `-outdir`, so latexmk writes
+    // print.pdf and print.synctex.gz next to print.tex in blueprint/src. This must
+    // point there too, or SyncTeX forward search (ctrl+alt+j) finds no PDF.
+    "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/blueprint/src"
 }
