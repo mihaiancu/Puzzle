@@ -6,7 +6,6 @@
 \begin{lemma}
 \label{fun_shift_sum_one}
 \lean{fun_shift_sum_one}
-\leanok
 \uses{def:SF, def:d}
 If $f:\Zz^n \to \Fin n$ is \eqref{SF}, $k\in\Fin n$, and $b\in\Zz^n$, then
 $$\sum_{i\in\Fin n} \delta(f(b+{\rm e}_i),k) = 1.$$
@@ -30,7 +29,6 @@ Clearly, $\delta(f(b+{\rm e}_{i_k}),k) = 1$, by the definition of \eqref{d} and 
 \begin{lemma}
 \label{fun_shift_sum_pow2}
 \lean{fun_shift_sum_pow2}
-\leanok
 \uses{def:SF, def:d}
  If $f:\Zz^n \to \Fin n$ is \eqref{SF} and $k\in\Fin n$, then
 $$\sum_{b\in\Zz^n} \sum_{i\in\Fin n} \delta(f(b+{\rm e}_i),k) = 2^n.$$
@@ -49,7 +47,6 @@ which {\B simplifies} further to $2^n$.
 \begin{lemma}
 \label{fun_shift_sum_rev}
 \lean{fun_shift_sum_rev}
-\leanok
 \uses{def:e, def:d}
  If $f:\Zz^n \to \Fin n$ and $k,i\in\Fin n$, then
 $$\sum_{b\in\Zz^n} \delta(f(b+{\rm e}_i),k) = \sum_{b\in\Zz^n} \delta(f(b),k).$$

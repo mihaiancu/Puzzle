@@ -5,7 +5,6 @@ import Mathlib.Data.ZMod.Defs
 
 -------------------DEFINITIONS------------------------------------------
 abbrev Z2 (n : ℕ) := Fin n → ZMod 2
-
 notation "ℤ₂^" n : max => Z2 n
 
 def e (i : Fin n) : ℤ₂^n := Pi.single i 1
@@ -17,32 +16,26 @@ def HasStrategy (n : ℕ) : Prop := ∃ f : ℤ₂^n → Fin n, SF f
 
 def δ (i j : Fin n) : ℕ := if i = j then 1 else 0
 --------------------FUNCTION SHIFT IS INJECTIVE--------------------------
-lemma fun_shift_surj (f : ℤ₂^n → Fin n) (h : SF f) (b : ℤ₂^n) :
-    Function.Surjective (fun (i : Fin n) ↦ (f (b + e i) : Fin n)) := sorry
+-- lemma fun_shift_surj : := sorry
 
-lemma fun_shift_inj (f : ℤ₂^n → Fin n) (h : SF f) (b : ℤ₂^n) :
-    Function.Injective (fun i ↦ f (b + e i)) := sorry
+-- lemma fun_shift_inj : := sorry
 ---------------------FUNCTION SHIFT SUM--------------------------------
-lemma fun_shift_sum_one (f : ℤ₂^n → Fin n) (h : SF f) (b : ℤ₂^n) (k : Fin n) :
-    ∑ i , δ (f (b + e i)) k = 1 := sorry
+-- lemma fun_shift_sum_one : := sorry
 
-lemma fun_shift_sum_pow2 (f : ℤ₂^n → Fin n) (h : SF f) (k : Fin n) :
-   ∑ b : ℤ₂^n, ∑ i : Fin n, δ (f (b + e i)) k = 2^n := sorry
+-- lemma fun_shift_sum_pow2 : := sorry
 
-lemma fun_shift_sum_rev (f : ℤ₂^n → Fin n) (k i : Fin n) :
-    ∑ b, δ (f (b + e i)) k = ∑ b, δ (f b) k := sorry
+-- lemma fun_shift_sum_rev : := sorry
 ---------------------------MODUS PONENS-------------------------------
-lemma strategy_pow2 (hn : 0 < n) (f : ℤ₂^n → Fin n) (h : SF f) :
-    ∃ N, n * N = 2^n := sorry
+-- lemma strategy_pow2 : := sorry
 
-lemma mul_pow2 (h : ∃ N, n * N = 2 ^ n) : ∃ m, n = 2 ^ m := sorry
+-- lemma mul_pow2 : := sorry
 
-theorem puzzle_mp (hn : 0 < n) (h : HasStrategy n) : ∃ m : ℕ, n = 2 ^ m := sorry
+-- theorem puzzle_mp : := sorry
 --------------------------MODUS PONENS REVERSE--------------------------
-noncomputable def bij_Fin (m : ℕ) : Fin (2 ^ m) ≃ ℤ₂^m := sorry
+-- noncomputable def bij_Fin : := sorry
 
-lemma sum_basis (i : Fin n) (f : Fin n → ℤ₂^m) : ∑ j, e i j • f j = f i := sorry
+-- lemma sum_basis : := sorry
 
-theorem puzzle_mpr (h : n = 2 ^ m) : HasStrategy n := sorry
+-- theorem puzzle_mpr : := sorry
 ------------------------------FINISH----------------------------------
-theorem puzzle (hn : 0 < n) : HasStrategy n ↔ ∃ m, n = 2 ^ m := sorry
+-- theorem puzzle : := sorry

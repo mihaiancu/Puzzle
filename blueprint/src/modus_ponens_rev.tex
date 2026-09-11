@@ -18,8 +18,7 @@ For $m\in\mathbb{N}$, let $g : \Fin (2^m) \to \Zz^m$ be a bijective function. $g
 \lean{sum_basis}
 \leanok
 \uses{def:e}
-If $i \in \Fin n$ and $f : \Fin n \to \Zz^m$, then
-$\displaystyle\sum_{j \in \Fin n} e_{ij} \boldsymbol{\cdot} f(j) = f(i).$
+If $i \in \Fin n$ and $f : \Fin n \to \Zz^m$, then $\displaystyle\sum_{j \in \Fin n} e_{ij} \boldsymbol{\cdot} f(j) = f(i).$
 \end{lemma}
 
 \begin{proof}
@@ -33,7 +32,6 @@ By the definition of \eqref{e}, $e_{ij} = 1$ if $i = j$ and $e_{ij} = 0$ otherwi
 \begin{theorem}
 \label{puzzle_mpr}
 \lean{puzzle_mpr}
-\leanok
 \uses{def:SF}
 If $n = 2^m$ for some $m$, then the puzzle has a strategy for $n$.
 \end{theorem}
