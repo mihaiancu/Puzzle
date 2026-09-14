@@ -2,8 +2,6 @@
 Day3_files/
 ## macOS
 .DS_Store
-## Agents
-.agents/*
 ## Scripts (template setup / dev-only helpers, not needed for build)
 /scripts/
 ## Lake
