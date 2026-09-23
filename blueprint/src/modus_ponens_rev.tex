@@ -6,6 +6,7 @@
 \label{bij_Fin}
 \lean{bij_Fin}
 \uses{def:Z2n}
+\leanok
 For $m\in\mathbb{N}$, let $g : \Fin (2^m) \to \Zz^m$ be a bijective function. $g$ exists, {\B applying} the fact that $\Fin (2^m)$ and $\Zz^m$ {\B simply} have {\B equal cardinals}.
 \end{definition}
 
@@ -17,10 +18,12 @@ For $m\in\mathbb{N}$, let $g : \Fin (2^m) \to \Zz^m$ be a bijective function. $g
 \label{sum_basis}
 \lean{sum_basis}
 \uses{def:e}
+\leanok
 If $i \in \Fin n$ and $f : \Fin n \to \Zz^m$, then $\displaystyle\sum_{j \in \Fin n} e_{ij} \boldsymbol{\cdot} f(j) = f(i).$
 \end{lemma}
 
 \begin{proof}
+  \leanok
 {\B Unfolding} the definition of \eqref{e}, we can {\B rewrite}  $\sum_{j \in \Fin n} e_{ij} \boldsymbol{\cdot} f(j)$ as $f(i)$, because the {\B single} term that contributes in the {\B sum} is the one with $j = i$ and $e_{ii} = 1$.
 \end{proof}
 
@@ -32,11 +35,13 @@ If $i \in \Fin n$ and $f : \Fin n \to \Zz^m$, then $\displaystyle\sum_{j \in \Fi
 \label{puzzle_mpr}
 \lean{puzzle_mpr}
 \uses{def:SF}
+\leanok
 If $n = 2^m$ for some $m$, then the puzzle has a strategy for $n$.
 \end{theorem}
 
 \begin{proof}
 \uses{bij_Fin, sum_basis}
+\leanok
 First, we {\B rewrite} $n$ as $2^m$ in the definition of \eqref{SF}. {\B Let} $g$ be given by {\B Definition} \ref{bij_Fin} and {\B use} for $f$ in \eqref{SF} the function
 $$b\mapsto g^{-1}\left(\sum_{j\in\Fin 2^m} b_j \boldsymbol{\cdot} g(j)\right).$$
 
